@@ -14,6 +14,19 @@ public class Card {
 
     int intCard = 0;
 
+    /**
+     * Default Constructor for card class assigns it a value of ace of clubs.
+     */
+    public Card() {
+        this.setCard(1);
+    }
+    /**
+     * Constructor for the card class where you can assign it a card value.
+     */
+    public Card(int intpCard) {
+        this.setCard(intpCard);
+    }
+
     /*
      * Sets the value of the card.
      * TODO: add logic to prevent invalid values

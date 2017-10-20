@@ -8,10 +8,53 @@ import java.util.Scanner;
 
 public class Player {
 
+    static int intNumberOfPlayers = 1;
     String strName = "No One";
     int intCurrentMoney = 100;
     int intCurrentBet = 10;
     //Array Hand
+
+    /**
+     * Default constructor for player class setup players based on numbers.
+     */
+    public Player() {
+        this.setName("Player " + intNumberOfPlayers++);
+        this.setMoney(1000);
+        this.setBet(0);
+    } 
+
+    /**
+     * Constructor where you just assign the money the player starts.
+     */
+    public Player(int intpMoney) {
+        this.setName("Player " + intNumberOfPlayers++);
+        this.setMoney(intpMoney);
+        this.setBet(0);
+    }
+
+    /**
+     * Constructor for player where you specify the name and the money the player starts with.
+     */
+    public Player(String strpName, int intpMoney) {
+        intNumberOfPlayers++;
+        this.setName(strpName);
+        this.setMoney(intpMoney);
+        this.setBet(0);
+    }
+
+    /**
+     * Method to set the current money amount the player has.
+     */
+    public void setMoney(int intpMoney) {
+        this.intCurrentMoney = intpMoney;
+    }
+
+    /**
+     * Method to set the current bet.
+     */
+    public void setBet(int intpBet) {
+        this.intCurrentBet = intpBet;
+    }
 
     /*
      * Get the players name.
