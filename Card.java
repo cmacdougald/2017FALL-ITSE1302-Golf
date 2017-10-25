@@ -49,6 +49,27 @@ public class Card {
         return ((this.getCard() - 1 ) % 13) + 1;
     }
     
+        /*
+     * Return the face value of the card.
+     */
+    public String getFaceString() {
+        int intValue = getFaceValue();
+        String strFace = "" + intValue;
+        if (1 == intValue) {
+            strFace = "Ace";
+        }
+        if (11 == intValue) {
+            strFace = "Jack";
+        }
+        if (12 == intValue) {
+            strFace = "Queen";
+        }
+        if (13 == intValue) {
+            strFace = "King";
+        }
+
+        return strFace;
+    }
     /*
      * Return the suite value of the card.
      */
@@ -56,6 +77,23 @@ public class Card {
         return (this.getCard() - 1) / 13;
     }
 
+    public String getSuiteString() {
+        int intValue = getSuiteValue();
+        String strSuite = "" + intValue;
+        if (0 == intValue) {
+            strSuite = "Clubs";
+        }
+        if (1 == intValue) {
+            strSuite = "Diamonds";
+        }
+        if (2 == intValue) {
+            strSuite = "Hearts";
+        }
+        if (3 == intValue) {
+            strSuite = "Spades";
+        }
+        return strSuite;
+    }
     /* 
      * Simple function to enter a card for testing purposes.
      */
@@ -69,7 +107,7 @@ public class Card {
      * Returns the string value of this object.
      */
     public String toString() {
-        return "{\"Face\": " + this.getFaceValue() +
-            ", \"Suite\": " + this.getSuiteValue() + "}";
+        return "{\"Face\": " + this.getFaceString() +
+            ", \"Suite\": " + this.getSuiteString() + "}";
     }
 }

@@ -17,7 +17,7 @@ public class GolfGame {
         //Use the player contructor to create a special dealer object instance
         Player objDealer = new Player("Dealer", 0);
         Deck objDeck = new Deck();
-        Card objCard = new Card(24);
+        Card objCard = new Card(26);
         Card objCard2 = new Card();
         //objPlayer.inputName();
         System.out.println(objDealer);
