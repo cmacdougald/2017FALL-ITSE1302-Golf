@@ -107,6 +107,10 @@ public class Card {
      * Returns the string value of this object.
      */
     public String toString() {
+        return this.getFaceString() + " of " + this.getSuiteString();
+    }
+
+    public String toJSON() {
         return "{\"Face\": " + this.getFaceString() +
             ", \"Suite\": " + this.getSuiteString() + "}";
     }

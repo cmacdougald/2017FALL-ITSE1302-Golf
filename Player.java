@@ -5,6 +5,7 @@
  */
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Player {
 
@@ -13,6 +14,7 @@ public class Player {
     int intCurrentMoney = 100;
     int intCurrentBet = 10;
     //Array Hand
+    ArrayList<Card> aryHand = new ArrayList<Card>();
 
     /**
      * Default constructor for player class setup players based on numbers.

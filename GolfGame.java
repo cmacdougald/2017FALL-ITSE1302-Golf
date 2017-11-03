@@ -27,6 +27,8 @@ public class GolfGame {
         System.out.println(objCard);
         //objCard2.inputCard();
         System.out.println(objCard2);
+        objDeck.shuffle();
+        System.out.println(objDeck);
     }
 
 }
