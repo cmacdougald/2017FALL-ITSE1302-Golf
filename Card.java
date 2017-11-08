@@ -54,18 +54,22 @@ public class Card {
      */
     public String getFaceString() {
         int intValue = getFaceValue();
-        String strFace = "" + intValue;
-        if (1 == intValue) {
-            strFace = "Ace";
-        }
-        if (11 == intValue) {
-            strFace = "Jack";
-        }
-        if (12 == intValue) {
-            strFace = "Queen";
-        }
-        if (13 == intValue) {
-            strFace = "King";
+        String strFace = "";
+        switch (intValue) {
+            case 1:
+                strFace = "Ace";
+                break;
+            case 11:
+                strFace = "Jack";
+                break;
+            case 12:
+                strFace = "Queen";
+                break;
+            case 13:
+                strFace = "King";
+                break;
+            default:
+                strFace += intValue;
         }
 
         return strFace;
@@ -79,18 +83,20 @@ public class Card {
 
     public String getSuiteString() {
         int intValue = getSuiteValue();
-        String strSuite = "" + intValue;
-        if (0 == intValue) {
-            strSuite = "Clubs";
-        }
-        if (1 == intValue) {
-            strSuite = "Diamonds";
-        }
-        if (2 == intValue) {
-            strSuite = "Hearts";
-        }
-        if (3 == intValue) {
-            strSuite = "Spades";
+        String strSuite = "";
+        switch (intValue) {
+            case 0:
+                strSuite = "Clubs";
+                break;
+            case 1:
+                strSuite = "Diamonds";
+                break;
+            case 2:
+                strSuite = "Hearts";
+                break;
+            case 3:
+                strSuite = "Spades";
+                break;
         }
         return strSuite;
     }
