@@ -17,18 +17,46 @@ public class GolfGame {
         //Use the player contructor to create a special dealer object instance
         Player objDealer = new Player("Dealer", 0);
         Deck objDeck = new Deck();
-        Card objCard = new Card(26);
-        Card objCard2 = new Card();
+
+        // Logic to determine when to shuffle should be at the top of your game loop.
+        //if(objDeck.shouldShuffle()) {
+        //    objDeck.shuffle();
+        //}
+
+
         //objPlayer.inputName();
         System.out.println(objDealer);
         System.out.println(objPlayer);
         System.out.println(objPlayer2);
         //objCard.setCard(4);
-        System.out.println(objCard);
+        //System.out.println(objCard);
         //objCard2.inputCard();
-        System.out.println(objCard2);
+        //System.out.println(objCard2);
         objDeck.shuffle();
-        System.out.println(objDeck);
+        //System.out.println(objDeck);
+        Card objUnwantedCard = new Card();
+
+        objPlayer.addCard(objDeck.getNextCard(), true);
+        objPlayer.addCard(objDeck.getNextCard());
+        objPlayer.addCard(objDeck.getNextCard(), true);
+        objPlayer.addCard(objDeck.getNextCard());
+        objPlayer.addCard(objDeck.getNextCard());
+        objPlayer.addCard(objDeck.getNextCard());
+        objPlayer.turnCardOver(0);
+        objPlayer.turnCardOver(5);
+        objPlayer.printHand();
+        objPlayer.turnCardOver(5);
+        objPlayer.printHand();
+        objUnwantedCard = objPlayer.swapCard(5, objDeck.getNextCard());
+        objPlayer.turnCardOver(5);
+        objPlayer.turnCardOver(2);
+        for(int intCounter = 0; intCounter <= 5; intCounter++) {
+            objPlayer.turnCardOver(intCounter);
+        }
+
+        objPlayer.printHand();
+
+        System.out.println("Unwanted Card: " + objUnwantedCard);
     }
 
 }
