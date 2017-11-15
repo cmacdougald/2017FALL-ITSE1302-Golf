@@ -5,7 +5,8 @@
  */
 
 import java.util.Scanner;
-
+import java.util.ArrayList;
+import java.util.Collections;
 
 /*
  * Card class for 
@@ -48,6 +49,21 @@ public class Card {
     public int getFaceValue() {
         return ((this.getCard() - 1 ) % 13) + 1;
     }
+
+    public static ArrayList<Integer> getFaceValueCount(ArrayList<Card> aryCards) {
+        ArrayList<Integer> aryFaceValueCount = new ArrayList<Integer>();
+        for(int intCounter = 0; intCounter <= 13; intCounter++) {
+            aryFaceValueCount.add(0);
+        }
+        for(int intIndex = 0; intIndex < aryCards.size(); intIndex++) {
+            int intTempFaceValue = aryCards.get(intIndex).getFaceValue();
+            int intTempCount = aryFaceValueCount.get(intTempFaceValue);
+            intTempCount++;
+            aryFaceValueCount.set(intTempFaceValue, intTempCount);
+            //System.out.println(aryFaceValueCount);
+        }
+        return aryFaceValueCount;
+    } 
     
         /*
      * Return the face value of the card.

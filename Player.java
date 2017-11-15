@@ -71,6 +71,18 @@ public class Player {
 		this.setBet(objScanner.nextInt());
 	}
 
+	private int getScoreOfPairs() {
+		ArrayList<Integer> aryFaceValueCount = Card.getFaceValueCount(this.aryHand);
+		int intSum = 0;
+		for(int intIndex = 0; intIndex < aryFaceValueCount.size(); intIndex++) {
+			if (aryFaceValueCount.get(intIndex) % 2 == 0) {
+				intSum += (intIndex * aryFaceValueCount.get(intIndex));
+			}			
+		}
+		//System.out.println(intSum);
+		return intSum;
+	}
+
 	public int getScore() {
 		int intScore = 0;
 		int intCardValue = 0;
@@ -89,6 +101,7 @@ public class Player {
 			}
 			intScore += intCardValue;
 		}
+		intScore -= this.getScoreOfPairs();
 		return intScore;
 	}
 
