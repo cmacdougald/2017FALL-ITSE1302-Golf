@@ -23,7 +23,11 @@ public class GolfGame {
         //    objDeck.shuffle();
         //}
 
-
+/*
+        // *************************************************
+        // Code below this point is to be replaced with your logic
+        // This is just examples of how to use the functions.
+        // *************************************************
         //objPlayer.inputName();
         System.out.println(objDealer);
         System.out.println(objPlayer);
@@ -57,6 +61,8 @@ public class GolfGame {
         objPlayer.printHand();
 
         System.out.println("Unwanted Card: " + objUnwantedCard);
+*/
+        System.out.println("Your logic goes here!");
     }
 
 }
