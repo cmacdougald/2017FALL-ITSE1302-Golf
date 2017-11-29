@@ -53,7 +53,7 @@ public class GolfGame {
         for(int intCounter = 0; intCounter <= 5; intCounter++) {
             objPlayer.turnCardOver(intCounter);
         }
-
+        objPlayer.score();
         objPlayer.printHand();
 
         System.out.println("Unwanted Card: " + objUnwantedCard);

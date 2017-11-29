@@ -14,6 +14,7 @@ public class Player {
 	String strName = "No One";
 	int intCurrentMoney = 100;
 	int intCurrentBet = 10;
+	int intCurrentScore = 0;
 	//Array Hand
 	ArrayList < Card > aryHand = new ArrayList < Card > ();
 	ArrayList < Boolean > aryFaceUp = new ArrayList < Boolean > ();
@@ -84,6 +85,18 @@ public class Player {
 	}
 
 	public int getScore() {
+		return this.intCurrentScore;
+	}
+
+	public void clearScore() {
+		this.intCurrentScore = 0;
+	}
+
+	public void score() {
+		this.intCurrentScore += this.calculateScore();
+	}
+
+	public int calculateScore() {
 		int intScore = 0;
 		int intCardValue = 0;
 		for (int intIndex = 0;
