@@ -27,14 +27,6 @@ public class Card {
     public Card(int intpCard) {
         this.setCard(intpCard);
     }
-
-    /*
-     * Sets the value of the card.
-     * TODO: add logic to prevent invalid values
-     */
-    public void setCard(int intpCard) {
-        this.intCard = intpCard;
-    }
     
     /*
      * Returns the value of the card.
@@ -42,14 +34,15 @@ public class Card {
     private int getCard() {
         return intCard;
     }
-
     /*
      * Return the face value of the card.
      */
     public int getFaceValue() {
         return ((this.getCard() - 1 ) % 13) + 1;
     }
-
+    /**
+     * Counts the face of value of each of the cards and returns that value.
+     */
     public static ArrayList<Integer> getFaceValueCount(ArrayList<Card> aryCards) {
         ArrayList<Integer> aryFaceValueCount = new ArrayList<Integer>();
         for(int intCounter = 0; intCounter <= 13; intCounter++) {
@@ -63,9 +56,8 @@ public class Card {
             //System.out.println(aryFaceValueCount);
         }
         return aryFaceValueCount;
-    } 
-    
-        /*
+    }
+    /**
      * Return the face value of the card.
      */
     public String getFaceString() {
@@ -90,13 +82,10 @@ public class Card {
 
         return strFace;
     }
-    /*
-     * Return the suite value of the card.
-     */
-    public int getSuiteValue() {
-        return (this.getCard() - 1) / 13;
-    }
 
+    /**
+     * Returns the suite as a string.
+     */
     public String getSuiteString() {
         int intValue = getSuiteValue();
         String strSuite = "";
@@ -116,7 +105,30 @@ public class Card {
         }
         return strSuite;
     }
-    /* 
+    /**
+     * Return the suite value of the card.
+     */
+    public int getSuiteValue() {
+        return (this.getCard() - 1) / 13;
+    }
+    /**
+     * Counts the face of value of each of the cards and returns that value.
+     */
+    public static ArrayList<Integer> getSuiteValueCount(ArrayList<Card> aryCards) {
+        ArrayList<Integer> arySuiteValueCount = new ArrayList<Integer>();
+        for(int intCounter = 0; intCounter <= 3; intCounter++) {
+            arySuiteValueCount.add(0);
+        }
+        for(int intIndex = 0; intIndex < aryCards.size(); intIndex++) {
+            int intTempSuiteValue = aryCards.get(intIndex).getSuiteValue();
+            int intTempCount = arySuiteValueCount.get(intTempSuiteValue);
+            intTempCount++;
+            arySuiteValueCount.set(intTempSuiteValue, intTempCount);
+            //System.out.println(arySuiteValueCount);
+        }
+        return arySuiteValueCount;
+    }
+    /** 
      * Simple function to enter a card for testing purposes.
      */
     public void inputCard() {
@@ -124,16 +136,25 @@ public class Card {
         System.out.print("Please enter a number between 1 and 52: ");
         this.setCard(objScanner.nextInt());
     }
-
-    /*
+    /**
+     * Sets the value of the card.
+     * TODO: add logic to prevent invalid values
+     */
+    public void setCard(int intpCard) {
+        this.intCard = intpCard;
+    }
+    /**
+     * Returns the card as a json object.
+     */
+    public String toJSON() {
+        return "{\"Face\": " + this.getFaceString() +
+            ", \"Suite\": " + this.getSuiteString() + "}";
+    }
+    /**
      * Returns the string value of this object.
      */
     public String toString() {
         return this.getFaceString() + " of " + this.getSuiteString();
     }
 
-    public String toJSON() {
-        return "{\"Face\": " + this.getFaceString() +
-            ", \"Suite\": " + this.getSuiteString() + "}";
-    }
 }
