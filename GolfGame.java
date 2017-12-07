@@ -53,7 +53,12 @@ public class GolfGame {
             System.out.println("Your logic goes here!");
 
         } while(!objpPlayer.isTurnOver());
-    }   
+    }
+    
+    public void playRound() {
+        this.playRound(this.objPlayer);
+        this.playRound(this.objPlayer2);
+    }
 
     private void shuffle() {
         if(objDeck.shouldShuffle()) {
