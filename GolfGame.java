@@ -33,26 +33,26 @@ public class GolfGame {
         aryDiscardPile.clear();
     }
 
-    public void addCards(Player objPlayer) {
+    public void addCards(Player objpPlayer) {
         for(int intCounter = 0; intCounter < 6; intCounter++) {
-            objPlayer.addCard(objDeck.getNextCard());
+            objpPlayer.addCard(objDeck.getNextCard());
         }
     }
 
-    public void playRound() {
-        addCards(objPlayer);
+    public void playRound(Player objpPlayer) {
+        addCards(objpPlayer);
         //Ask the player what they want to do.
         int intGetOption = 0;
         do {
-            objPlayer.printHand();
+            objpPlayer.printHand();
             System.out.println("Enter which card you would like to flip? ");
             intGetOption = objScanner.nextInt();
-            objPlayer.turnCardOver(intGetOption);
+            objpPlayer.turnCardOver(intGetOption);
             
             
             System.out.println("Your logic goes here!");
 
-        } while(!objPlayer.isTurnOver());
+        } while(!objpPlayer.isTurnOver());
     }   
 
     private void shuffle() {
