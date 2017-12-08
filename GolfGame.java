@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class GolfGame {
 
-    Player objPlayer = new Player();
-    Player objPlayer2 = new Player();
+    Player objPlayer = new Player("Player 1", 1000);
+    Player objPlayer2 = new Player("Player 2", 1000);
     //Use the player contructor to create a special dealer object instance
     Player objDealer = new Player("Dealer", 0);
     Deck objDeck = new Deck();
@@ -29,12 +29,12 @@ public class GolfGame {
     }
 
     public GolfGame() {
-        objPlayer.clearHand();
         objDeck.shuffle();
         aryDiscardPile.clear();
     }
 
     public void addCards(Player objpPlayer) {
+        objpPlayer.clearHand();
         for(int intCounter = 0; intCounter < 6; intCounter++) {
             objpPlayer.addCard(objDeck.getNextCard());
         }
@@ -48,16 +48,16 @@ public class GolfGame {
         int intGetOption = 0;
         char chrOption = ' ';
         do {
-            objPlayer.printHand();
-            System.out.println("Enter which card you would like to interact with (1-6)? ");
-            intGetOption = objScanner.nextInt();
-            intGetOption--;
+            objpPlayer.printHand();
             System.out.println("What would you like to do: ");
             System.out.println("Use (D)iscard Pile - " + (aryDiscardPile.size() >= 1 ? aryDiscardPile.get(0) : "N/A"));
             System.out.println("(F)lip Card");
             System.out.println("(G)et Card from Deck");
             System.out.print("Enter your choice: ");
             chrOption = objScanner.next().charAt(0);
+            System.out.println("Enter which card you would like to interact with (1-6)? ");
+            intGetOption = objScanner.nextInt();
+            intGetOption--;
             switch(chrOption) {
                 case 'd': case 'D':
                     if(aryDiscardPile.size() >= 1) {
