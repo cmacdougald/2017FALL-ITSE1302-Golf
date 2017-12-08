@@ -26,6 +26,7 @@ public class GolfGame {
             objGolfGame.shuffle();
             objGolfGame.playRound();
         }
+        objGolfGame.determineWinner();
     }
 
     public GolfGame() {
@@ -72,6 +73,7 @@ public class GolfGame {
                     break;
             }
         } while(!objpPlayer.isTurnOver());
+        objpPlayer.score();
     }
 
     public void playRound() {
@@ -82,6 +84,14 @@ public class GolfGame {
     private void shuffle() {
         if(objDeck.shouldShuffle()) {
             objDeck.shuffle();
+        }
+    }
+
+    public void determineWinner() {
+        if(objPlayer.getScore() < objPlayer2.getScore()) {
+            System.out.println(objPlayer.getName() + " wins!");
+        } else {
+            System.out.println(objPlayer2.getName() + " wins!");
         }
     }
 
