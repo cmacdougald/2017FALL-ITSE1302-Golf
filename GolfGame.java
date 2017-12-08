@@ -22,9 +22,10 @@ public class GolfGame {
     public static void main(String [] strArgs) {
         //All game logic exists here
         GolfGame objGolfGame = new GolfGame();
-        objGolfGame.shuffle();
-        objGolfGame.playRound();
-        
+        for(int intRound = 1; intRound <= 10; intRound++) {
+            objGolfGame.shuffle();
+            objGolfGame.playRound();
+        }
     }
 
     public GolfGame() {
@@ -37,27 +38,45 @@ public class GolfGame {
         for(int intCounter = 0; intCounter < 6; intCounter++) {
             objpPlayer.addCard(objDeck.getNextCard());
         }
+        objpPlayer.turnCardOver(0);
+        objpPlayer.turnCardOver(1);
     }
 
     public void playRound(Player objpPlayer) {
         addCards(objpPlayer);
         //Ask the player what they want to do.
         int intGetOption = 0;
+        char chrOption = ' ';
         do {
-            objpPlayer.printHand();
-            System.out.println("Enter which card you would like to flip? ");
+            objPlayer.printHand();
+            System.out.println("Enter which card you would like to interact with (1-6)? ");
             intGetOption = objScanner.nextInt();
-            objpPlayer.turnCardOver(intGetOption);
-            
-            
-            System.out.println("Your logic goes here!");
-
+            intGetOption--;
+            System.out.println("What would you like to do: ");
+            System.out.println("Use (D)iscard Pile - " + (aryDiscardPile.size() >= 1 ? aryDiscardPile.get(0) : "N/A"));
+            System.out.println("(F)lip Card");
+            System.out.println("(G)et Card from Deck");
+            System.out.print("Enter your choice: ");
+            chrOption = objScanner.next().charAt(0);
+            switch(chrOption) {
+                case 'd': case 'D':
+                    if(aryDiscardPile.size() >= 1) {
+                        aryDiscardPile.add(objpPlayer.swapCard(intGetOption, aryDiscardPile.remove(0)));
+                    }
+                    break;
+                case 'f': case 'F':
+                    objpPlayer.turnCardOver(intGetOption);
+                    break;
+                case 'g': case 'G':
+                    aryDiscardPile.add(objpPlayer.swapCard(intGetOption, objDeck.getNextCard()));
+                    break;
+            }
         } while(!objpPlayer.isTurnOver());
     }
-    
+
     public void playRound() {
-        this.playRound(this.objPlayer);
-        this.playRound(this.objPlayer2);
+        playRound(objPlayer);
+        playRound(objPlayer2);
     }
 
     private void shuffle() {
